@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://csj4pdcjnsyfg"]
+
+[ext_resource type="Texture2D" uid="uid://dcej7tg83s5hf" path="res://spritesheet.png" id="1_6431o"]
+[ext_resource type="Script" path="res://Player.gd" id="2_b7yuq"]
+[ext_resource type="AudioStream" uid="uid://bj6w5njh8tdgs" path="res://sfx_63.wav" id="3_coj0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sodq"]
+size = Vector2(4, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnerx"]
+size = Vector2(3, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xe7nm"]
+size = Vector2(3, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aij5v"]
+size = Vector2(3, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r633o"]
+size = Vector2(3, 4)
+
+[node name="Main Scene" type="Node2D"]
+texture_filter = 1
+
+[node name="Spritesheet" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(192, 64)
+texture = ExtResource("1_6431o")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(66, 60)
+script = ExtResource("2_b7yuq")
+
+[node name="Default" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_6431o")
+region_enabled = true
+region_rect = Rect2(101, 0, 11, 12)
+
+[node name="DefaultCollision" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_6sodq")
+
+[node name="SoftLeft" type="Sprite2D" parent="Player"]
+visible = false
+texture = ExtResource("1_6431o")
+region_enabled = true
+region_rect = Rect2(93, 0, 8, 12)
+
+[node name="SoftLeftCollision" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2(-0.5, 2)
+shape = SubResource("RectangleShape2D_wnerx")
+
+[node name="HardLeft" type="Sprite2D" parent="Player"]
+visible = false
+texture = ExtResource("1_6431o")
+region_enabled = true
+region_rect = Rect2(86, 0, 7, 12)
+
+[node name="HardLeftCollision" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_xe7nm")
+
+[node name="SoftRight" type="Sprite2D" parent="Player"]
+visible = false
+texture = ExtResource("1_6431o")
+region_enabled = true
+region_rect = Rect2(112, 0, 8, 12)
+
+[node name="SoftRightCollision" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_aij5v")
+
+[node name="HardRight" type="Sprite2D" parent="Player"]
+visible = false
+texture = ExtResource("1_6431o")
+region_enabled = true
+region_rect = Rect2(120, 0, 7, 12)
+
+[node name="HardRightCollision" type="CollisionShape2D" parent="Player"]
+visible = false
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_r633o")
+
+[node name="shootfx" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("3_coj0o")
